@@ -1,7 +1,7 @@
 import React from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
 
-const Header = () => (
+const Body = () => (
 
 	<Tabs>
 		<Tab label="Home">
@@ -17,4 +17,4 @@ const Header = () => (
 )
 
 
-export default Header;
+export default Body;

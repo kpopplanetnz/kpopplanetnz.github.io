@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Card, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import Header from './components/header.jsx';
+import Body from './components/body.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 // Needed for onTouchTap
@@ -18,7 +18,7 @@ class App extends React.Component {
 				<img src="./pictures/FB-Banner-Final.jpg"/>
 			</CardMedia>
 			<CardText>
-    			<Header/>
+    			<Body/>
 			</CardText>
 		</Card>
   	</MuiThemeProvider>
