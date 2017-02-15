@@ -1,17 +1,20 @@
 import React from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
+import Home from './Home.jsx';
+import Sponsors from './Sponsors.jsx';
+import AboutUs from './AboutUs.jsx';
 
 const Body = () => (
 
 	<Tabs>
 		<Tab label="Home">
-			<h2>This is Home</h2>
+			<Home/>
 		</Tab>
 		<Tab label="Sponsors">
-			<h2>This is Sponsors</h2>
+			<Sponsors/>
 		</Tab>
 		<Tab label="About Us">
-			<h2>This is About Us</h2>
+			<AboutUs/>
 		</Tab>
 	</Tabs>
 )
