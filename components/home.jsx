@@ -1,22 +1,23 @@
 import React from 'react';
 import ImageGallery from 'react-image-gallery';
+import Divider from 'material-ui/Divider';
 
 const images = [
       	{
-        	original: './components/images/slider/anniversary.jpg',
-        	thumbnail: './components/images/slider/anniversary.jpg',
+        	original: './images/slider/anniversary.jpg',
+        	thumbnail: './images/slider/anniversary.jpg',
       	},
     	{
-        	original: './components/images/slider/goldenbell.jpg',
-        	thumbnail: './components/images/slider/goldenbell.jpg',
+        	original: './images/slider/goldenbell.jpg',
+        	thumbnail: './images/slider/goldenbell.jpg',
       	},
         {
-        	original: './components/images/slider/newmembers.jpg',
-        	thumbnail: './components/images/slider/newmembers.jpg',
+        	original: './images/slider/newmembers.jpg',
+        	thumbnail: './images/slider/newmembers.jpg',
       	},
             {
-        	original: './components/images/slider/runningman.jpg',
-        	thumbnail: './components/images/slider/runningman.jpg',
+        	original: './images/slider/runningman.jpg',
+        	thumbnail: './images/slider/runningman.jpg',
       	},
 ]
 
@@ -27,7 +28,7 @@ const Home = () => (
 			sliderInterval={1000}
 			autoPlay={true}
 		/>
-
+		<Divider/>
 	</div>
 )
 

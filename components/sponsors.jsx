@@ -16,12 +16,12 @@ const styles = {
 
 const tilesData = [
   {
-    img: './components/images/FB-Banner-Final.jpg',
+    img: './images/FB-Banner-Final.jpg',
     title: 'Sponsor 1',
     //author: 'jill111',
   },
   {
-    img: './components/images/FB-Banner-Final.jpg',
+    img: './images/FB-Banner-Final.jpg',
     title: 'Sponsor 2',
   }
 ]

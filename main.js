@@ -19,7 +19,7 @@ class App extends React.Component {
 			<MuiThemeProvider>
 				<Card style={styles}>
 					<CardMedia>
-						<img src="./components/images/FB-Banner-Final.jpg"/>
+						<img src="./images/FB-Banner-Final.jpg"/>
 					</CardMedia>
 					<CardText>
 		    			<Body/>
