@@ -3,23 +3,22 @@ import ImageGallery from 'react-image-gallery';
 
 const images = [
       	{
-        	original: '/pictures/slider/anniversary.jpg',
-        	thumbnail: '/pictures/slider/anniversary.jpg',
+        	original: './components/images/slider/anniversary.jpg',
+        	thumbnail: './components/images/slider/anniversary.jpg',
       	},
     	{
-        	original: '/pictures/slider/goldenbell.jpg',
-        	thumbnail: '/pictures/slider/goldenbell.jpg',
+        	original: './components/images/slider/goldenbell.jpg',
+        	thumbnail: './components/images/slider/goldenbell.jpg',
       	},
         {
-        	original: '/pictures/slider/newmembers.jpg',
-        	thumbnail: '/pictures/slider/newmembers.jpg',
+        	original: './components/images/slider/newmembers.jpg',
+        	thumbnail: './components/images/slider/newmembers.jpg',
       	},
             {
-        	original: '/pictures/slider/runningman.jpg',
-        	thumbnail: '/pictures/slider/runningman.jpg',
+        	original: './components/images/slider/runningman.jpg',
+        	thumbnail: './components/images/slider/runningman.jpg',
       	},
 ]
-
 
 const Home = () => (
 	<div>

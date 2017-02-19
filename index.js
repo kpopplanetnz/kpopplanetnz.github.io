@@ -12685,17 +12685,17 @@ var _reactImageGallery2 = _interopRequireDefault(_reactImageGallery);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var images = [{
-  original: '/pictures/slider/anniversary.jpg',
-  thumbnail: '/pictures/slider/anniversary.jpg'
+  original: './components/images/slider/anniversary.jpg',
+  thumbnail: './components/images/slider/anniversary.jpg'
 }, {
-  original: '/pictures/slider/goldenbell.jpg',
-  thumbnail: '/pictures/slider/goldenbell.jpg'
+  original: './components/images/slider/goldenbell.jpg',
+  thumbnail: './components/images/slider/goldenbell.jpg'
 }, {
-  original: '/pictures/slider/newmembers.jpg',
-  thumbnail: '/pictures/slider/newmembers.jpg'
+  original: './components/images/slider/newmembers.jpg',
+  thumbnail: './components/images/slider/newmembers.jpg'
 }, {
-  original: '/pictures/slider/runningman.jpg',
-  thumbnail: '/pictures/slider/runningman.jpg'
+  original: './components/images/slider/runningman.jpg',
+  thumbnail: './components/images/slider/runningman.jpg'
 }];
 
 var Home = function Home() {
@@ -12745,10 +12745,10 @@ var styles = {
 };
 
 var tilesData = [{
-  img: '/pictures/FB-Banner-Final.jpg',
+  img: './components/images/FB-Banner-Final.jpg',
   title: 'Sponsor 1'
 }, {
-  img: '/pictures/FB-Banner-Final.jpg',
+  img: './components/images/FB-Banner-Final.jpg',
   title: 'Sponsor 2'
 }];
 
@@ -38334,7 +38334,7 @@ var App = function (_React$Component) {
 					_react2.default.createElement(
 						_Card.CardMedia,
 						null,
-						_react2.default.createElement('img', { src: './pictures/FB-Banner-Final.jpg' })
+						_react2.default.createElement('img', { src: './components/images/FB-Banner-Final.jpg' })
 					),
 					_react2.default.createElement(
 						_Card.CardText,
