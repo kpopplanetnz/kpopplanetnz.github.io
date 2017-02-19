@@ -12,7 +12,8 @@ injectTapEventPlugin();
 class App extends React.Component {
   	render () {
   		var styles = {
-  			'maxWidth': "1000px"
+  			'maxWidth': "1000px",
+  			margin: "auto"
   		};
 		return (
 			<MuiThemeProvider>
