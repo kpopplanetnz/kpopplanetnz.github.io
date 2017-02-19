@@ -10,20 +10,23 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
 class App extends React.Component {
-  render () {
-	return (
-	<MuiThemeProvider>
-		<Card>
-			<CardMedia>
-				<img src="./pictures/FB-Banner-Final.jpg"/>
-			</CardMedia>
-			<CardText>
-    			<Body/>
-			</CardText>
-		</Card>
-  	</MuiThemeProvider>
-  	);
-  }
+  	render () {
+  		var styles = {
+  			'maxWidth': "1000px"
+  		};
+		return (
+			<MuiThemeProvider>
+				<Card style={styles}>
+					<CardMedia>
+						<img src="./pictures/FB-Banner-Final.jpg"/>
+					</CardMedia>
+					<CardText>
+		    			<Body/>
+					</CardText>
+				</Card>
+			</MuiThemeProvider>
+  		);
+  	}
 }
 
 render(<App/>, document.getElementById('app'));
