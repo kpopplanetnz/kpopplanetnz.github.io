@@ -1,11 +1,10 @@
-# KpopPlanet
-
-== KpopPlanet Official Website ==
+# KPOP Planet Official Website 
 
 [Live Site](https://pietasty.github.io/KpopPlanet/)
 
-=== Developing Guidelines ===
+## Developing Guidelines
 Steps to take to setup development environment
+
 1. Clone repository
 2. Run ```npm install```
 3. Run ```npm start``` to launch Website
