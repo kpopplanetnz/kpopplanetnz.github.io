@@ -27,7 +27,7 @@ const tilesData = [
 ]
 
 const Sponsors = () => (
-	<div style={styles.root}>
+    <div style={styles.root}>
     <GridList
       cellHeight={180}
       style={styles.gridList} >

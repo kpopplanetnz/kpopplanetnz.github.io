@@ -7,20 +7,20 @@ import Events from './Events.jsx';
 
 const Body = () => (
 
-	<Tabs>
-		<Tab label="Home">
-			<Home/>
-		</Tab>
-		<Tab label="Events">
-			<Events/>
-		</Tab>
-		<Tab label="Sponsors">
-			<Sponsors/>
-		</Tab>
-		<Tab label="About Us">
-			<AboutUs/>
-		</Tab>
-	</Tabs>
+    <Tabs>
+        <Tab label="Home">
+            <Home/>
+        </Tab>
+        <Tab label="Events">
+            <Events/>
+        </Tab>
+        <Tab label="Sponsors">
+            <Sponsors/>
+        </Tab>
+        <Tab label="About Us">
+            <AboutUs/>
+        </Tab>
+    </Tabs>
 )
 
 
