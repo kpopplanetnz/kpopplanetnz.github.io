@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {Card, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {Card, CardActions, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import Body from './components/body.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
@@ -21,9 +21,9 @@ class App extends React.Component {
 					<CardMedia>
 						<img src="./images/FB-Banner-Final.jpg"/>
 					</CardMedia>
-					<CardText>
+					<CardActions>
 		    			<Body/>
-					</CardText>
+					</CardActions>
 				</Card>
 			</MuiThemeProvider>
   		);
