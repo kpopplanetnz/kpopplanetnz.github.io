@@ -3,3 +3,7 @@
         max-width: 90% !important;
     }
 }
+
+.hidden {
+    display: none;
+}
