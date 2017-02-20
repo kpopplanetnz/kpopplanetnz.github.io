@@ -12,12 +12,12 @@ injectTapEventPlugin();
 class App extends React.Component {
   	render () {
   		var styles = {
-  			'maxWidth': "1000px",
+  			'maxWidth': "100%",
   			margin: "auto"
   		};
 		return (
 			<MuiThemeProvider>
-				<Card style={styles}>
+				<Card className="container" style={styles}>
 					<CardMedia>
 						<img src="./images/FB-Banner-Final.jpg"/>
 					</CardMedia>
