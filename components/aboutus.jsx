@@ -98,10 +98,11 @@ const AboutUs = () => (
                 rows={1}
                 key={data.title}
             >
-                <CardMedia>
+                <CardMedia
+                    overlay={<CardTitle title={data.title} subtitle={data.position} />}
+                >
                     <img src={data.image}/>
                 </CardMedia>
-                <CardTitle title={data.title} subtitle={data.position} />
                 <CardText>
                     {data.about}
                 </CardText>
