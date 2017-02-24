@@ -44,7 +44,7 @@ const about = [
         title: "Catalina",
         image: "./images/profile/cat.jpg",
         position: "Graphics Designer",
-        about: ""
+        about: "Hello~ This is ya graphics and hype lady, Cat(alina)~ I'm trash for SHINee, BTS, Mamamoo, SNSD and many other groups that you too will most likely love as well~ I will sing the adlibs, main vocals and melody of any song and if you're lucky, dance very badly. Hope to see you all at events and get to know you!~"
     },
     {
         title: "Jason",
@@ -84,32 +84,36 @@ const about = [
     },
 ]
 
-const AboutUs = () => (
-    <div style={styles.root}>
-        <GridList
-            cols={2}
-            cellHeight={'auto'}
-            padding={1}
-            style={styles.gridList}
-        >
-        {about.map((data) => (
-            <Card
-                cols={1}
-                rows={1}
-                key={data.title}
+var AboutUs = React.createClass({
+    render: function(){
+        return(
+        <div style={styles.root}>
+            <GridList
+                cols={2}
+                cellHeight={'auto'}
+                padding={1}
+                style={styles.gridList}
             >
-                <CardMedia
-                    overlay={<CardTitle title={data.title} subtitle={data.position} />}
+            {about.map((data) => (
+                <Card
+                    cols={1}
+                    rows={1}
+                    key={data.title}
                 >
-                    <img src={data.image}/>
-                </CardMedia>
-                <CardText>
-                    {data.about}
-                </CardText>
-            </Card>
-        ))}
-        </GridList>
-    </div>
-)
+                    <CardMedia
+                        overlay={<CardTitle title={data.title} subtitle={data.position} />}
+                    >
+                        <img src={data.image}/>
+                    </CardMedia>
+                    <CardText>
+                        {data.about}
+                    </CardText>
+                </Card>
+            ))}
+            </GridList>
+        </div>
+        );
+    }
+});
 
 export default AboutUs;
