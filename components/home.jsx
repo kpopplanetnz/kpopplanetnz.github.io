@@ -27,6 +27,7 @@ const Home = () => (
             items={images}
             sliderInterval={1000}
             autoPlay={true}
+            showThumbnails={false}
         />
         <Divider/>
     </div>
