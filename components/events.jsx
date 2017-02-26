@@ -17,14 +17,13 @@ const Events = () => (
     	<List>
     		<ListItem primaryText="New Member's Night"
     			secondaryText="Friday 10th March 6:30pm"
-    			rightIcon={ <RaisedButton label="Details"/>}
-    			onTouchTap={membersClick}
+    			rightIcon={ <RaisedButton label="Details" onTouchTap={membersClick}/>}
+    			
 			/>
 			<Divider/>
     		<ListItem primaryText="Running Man"
     			secondaryText="Saturday 25th March 10am"
-    			rightIcon={ <RaisedButton label="Details"/>}
-    			onTouchTap={runningClick}
+    			rightIcon={ <RaisedButton label="Details" onTouchTap={membersClick}/>}
 			/>
     	</List>
 	</div>

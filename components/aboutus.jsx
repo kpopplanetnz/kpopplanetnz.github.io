@@ -50,7 +50,7 @@ const about = [
         title: "Jason",
         image: "./images/profile/ting.jpg",
         position: "Senior Advisor",
-        about: "events, we hope to provide everyone a fun and safe place to hang out and away from uni stress. I hope you will come along and be apart of our family. Hope to meet you all soon."
+        about: "Within the few hours of club events, we hope to provide everyone a fun and safe place to hang out and away from uni stress. I hope you will come along and be apart of our family. Hope to meet you all soon."
     },
     {
         title: "Alena",
