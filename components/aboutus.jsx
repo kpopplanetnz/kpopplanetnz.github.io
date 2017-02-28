@@ -23,22 +23,28 @@ const about = [
         about: "Kpop fan of many groups. Love to meet new people. Yoona bae for lyfe <3"
     },
     {
+        title: "Shamal",
+        image: "./images/profile/shamal.png",
+        position: "Vice President / Social Media",
+        about: "Hi there! I'm K-pop Planet's resident Llama and your vice-president/social media manager for 2017~ I’ve made some of my best friends through K-pop Planet, so you definitely can too! Talk to me about your favourite groups (especially if they're either VIXX or EXID), and let's get to know each other better this year! Please anticipate our fun events!!! （≧∇≦）"
+    },
+    {
         title: "Yubo",
         image: "./images/profile/yubo.jpg",
-        position: "Vice/ Treasurer",
-        about: ""
+        position: "Treasurer",
+        about: "Hello and welcome to Kpop Planet! I am a Twice, Red Velvet and Girls' Generation trash. I look forward to meeting you at our events!"
     },
     {
         title: "Karen",
         image: "./images/profile/karen.jpg",
         position: "Secretary",
-        about: ""
+        about: "Fav Groups: Big Bang, +Multifandom (we'll be here all day). I look forward to meeting you all and fangirling/fanboying over the greatness that is Kpop."
     },
     {
         title: "Holly",
         image: "./images/profile/holly.png",
         position: "Secretary in training",
-        about: ""
+        about: "Lorem ipsum dolor sit amet, in vis dicta erant, impedit gloriatur vim ne, ne per sonet option incorrupte. Novum legimus et duo, ea habeo consequuntur cum, sea mutat essent eu. Nam ea dissentias intellegebat."
     },
     {
         title: "Catalina",
@@ -62,7 +68,7 @@ const about = [
         title: "Minseok",
         image: "./images/profile/min.jpg",
         position: "Events Manager",
-        about: "Hi everyone. My name is Min and my role is to organise events for you guys. My bias groups are G.O.D.,  Mamamoo and Twice. I hope you guys enjoy our events and have an amazing year. :)"
+        about: "Hi everyone. My name is Min and my role is to organise events for you guys. My bias groups are G.O.D., Mamamoo and Twice. I hope you guys enjoy our events and have an amazing year. :)"
     },
     {
         title: "Sharmine",
@@ -71,16 +77,10 @@ const about = [
         about: "Hi!! Enjoy our events and lets make a good friendship ^^~"
     },
     {
-        title: "Shamal",
-        image: "./images/profile/shamal.png",
-        position: "Soical Media Manager",
-        about: ""
-    },
-    {
         title: "Czarina",
         image: "./images/profile/czarina.jpg",
         position: "Graphic Designer",
-        about: ""
+        about: "Welcome to K-pop Planet! I'm the introvert dinosaur of the club. I listen and stan alot of groups and genre. I am looking forward to meet and interact with every single one of you legendary fans!"
     },
 ]
 
@@ -104,6 +104,9 @@ var AboutUs = React.createClass({
         };
     },
 
+    componentWillMount: function() {
+        this.onResize();
+    },
     componentDidMount: function() {
         window.addEventListener("resize", this.onResize);
     },
