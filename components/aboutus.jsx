@@ -20,7 +20,7 @@ const about = [
         title: "Jack",
         image: "./images/profile/jack.jpg",
         position: "President",
-        about: "Kpop fan of many groups. Love to meet new people. Yoona bae for lyfe <3"
+        about: "Welcome to Kpop Planet, hope you enjoy your time here with us!! Kpop fan of many groups. Love to meet new people. Yoona bae for lyfe <3"
     },
     {
         title: "Shamal",
