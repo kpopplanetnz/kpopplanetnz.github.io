@@ -34,6 +34,12 @@ const sponsorList = [
         //author: 'jill111',
     },
     {
+        name: 'The Don',
+        logo: './images/sponsors/the-don.png',
+        location: '47 High St, Auckland, 1010',
+        about: '10% off any purchase.'
+    },
+    {
         name: 'Bruce Lee Sushi',
         logo: './images/sponsors/bruce-lee-sushi.png',
         location: '4/18-26 Wellesley Street (Opposite to Auckland City Library)',

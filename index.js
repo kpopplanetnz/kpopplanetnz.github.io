@@ -13120,7 +13120,15 @@ var styles = {
         //height: 450,
         overflowY: 'auto'
     },
-    logo: {}
+    logo: {
+        height: '250',
+        width: 'auto',
+        maxWidth: 'none',
+        minWidth: 'none'
+    },
+    imgContainer: {
+        textAlign: 'center'
+    }
 };
 
 var sponsorList = [{
@@ -13129,6 +13137,11 @@ var sponsorList = [{
     location: 'Queen St, Lorne St, Newmarket',
     about: '1 FREE topping per drink at selected stores.'
     //author: 'jill111',
+}, {
+    name: 'The Don',
+    logo: './images/sponsors/the-don.png',
+    location: '47 High St, Auckland, 1010',
+    about: '10% off any purchase.'
 }, {
     name: 'Bruce Lee Sushi',
     logo: './images/sponsors/bruce-lee-sushi.png',
@@ -13192,7 +13205,11 @@ var Sponsors = _react2.default.createClass({
                         _react2.default.createElement(
                             _Card.CardMedia,
                             null,
-                            _react2.default.createElement('img', { style: styles.logo, src: sponsor.logo }),
+                            _react2.default.createElement(
+                                'div',
+                                { style: styles.imgContainer },
+                                _react2.default.createElement('img', { style: styles.logo, src: sponsor.logo })
+                            ),
                             _react2.default.createElement(_Card.CardTitle, { title: sponsor.name, subtitle: sponsor.location })
                         ),
                         _react2.default.createElement(
