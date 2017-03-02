@@ -14,7 +14,14 @@ const styles = {
         overflowY: 'auto',
     },
     logo: {
+        height: '250',
+        width: 'auto',
+        maxWidth: 'none',
+        minWidth: 'none',
     },
+    imgContainer: {
+        textAlign: 'center',
+    }
 };
 
 
@@ -84,7 +91,9 @@ var Sponsors = React.createClass({
                         
                     >
                         
-                        <img style={styles.logo} src={sponsor.logo}/>
+                        <div style={styles.imgContainer}>
+                            <img style={styles.logo} src={sponsor.logo}/>
+                        </div>
                         <CardTitle title={sponsor.name} subtitle={sponsor.location} />
                     </CardMedia>
                     <CardText>
