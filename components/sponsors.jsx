@@ -1,5 +1,5 @@
 import React from 'react';
-import {GridList} from 'material-ui/GridList';
+import {List, ListItem} from 'material-ui/List';
 import {Card, CardActions, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 const styles = {
@@ -7,23 +7,16 @@ const styles = {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-around',
+        color: 'gray',
     },
-    gridList: {
-        //width: 500,
-        //height: 450,
-        overflowY: 'auto',
+    card: {
+        flexBasis: '70%',
     },
-    logo: {
-        height: '250',
-        width: 'auto',
-        maxWidth: 'none',
-        minWidth: 'none',
+    list: {
+        flexBasis: '30%',
+        backgroundColor: '#e5e5e5',
     },
-    imgContainer: {
-        textAlign: 'center',
-    }
 };
-
 
 const sponsorList = [
     {
@@ -31,7 +24,6 @@ const sponsorList = [
         logo: './images/sponsors/gong-cha.jpg', 
         location: 'Queen St, Lorne St, Newmarket',
         about: '1 FREE topping per drink at selected stores.'
-        //author: 'jill111',
     },
     {
         name: 'The Don',
@@ -48,88 +40,41 @@ const sponsorList = [
 ]
 
 var Sponsors = React.createClass({
-    onResize: function(){
-        var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-        if(width < 800){
-            this.setState({cols: 2})
-        } else if (width < 1201){
-            this.setState({cols: 3})
-        } else if (width < 1601){
-            this.setState({cols: 4})
-        } else {
-            this.setState({cols: 5})
-        }
+
+    onClick: function(sponsor){
+        this.setState({
+            sponsor: sponsor
+        });
     },
 
-    getInitialState: function() {
+    getInitialState: function(){
         return {
-            cols: 2
+            sponsor: sponsorList[0]
         };
     },
 
-    componentWillMount: function() {
-        this.onResize();
-    },
-    componentDidMount: function() {
-        window.addEventListener("resize", this.onResize);
-    },
-    componentWillUnmount: function() {
-        window.removeEventListener("resize", this.onResize);
-    },
-
     render: function(){
-        return(
+        return (
         <div style={styles.root}>
-            <GridList
-                cols={this.state.cols}
-                cellHeight={'auto'}
-                padding={1}
-                style={styles.gridList}
-            >
+            <List style={styles.list}>
             {sponsorList.map((sponsor) => (
-                <Card
-                    cols={1}
-                    rows={1}
-                    key={sponsor.name}
-                    style={styles.card}
-                >
-                    <CardMedia
-                        
-                    >
-                        
-                        <div style={styles.imgContainer}>
-                            <img style={styles.logo} src={sponsor.logo}/>
-                        </div>
-                        <CardTitle title={sponsor.name} subtitle={sponsor.location} />
-                    </CardMedia>
-                    <CardText>
-                        {sponsor.about}
-                    </CardText>
-                </Card>
+                <ListItem primaryText={sponsor.name} key={sponsor.name} onTouchTap={this.onClick.bind(this,sponsor)}/>
             ))}
-            </GridList>
+            </List> 
+            <Card
+                style={styles.Card}
+            >
+            <CardMedia>
+                <img src={this.state.sponsor.logo} />
+                <CardTitle title={this.state.sponsor.name} subtitle={this.state.sponsor.location} />
+            </CardMedia>
+            <CardText>
+                {this.state.sponsor.about}
+            </CardText>
+            </Card>
         </div>
-        );
+        )
     }
 });
-
-/*const Sponsors = () => (
-    <div style={styles.root}>
-    <GridList
-      cellHeight={180}
-      style={styles.gridList} >
-      {sponsorList.map((sponsor) => (
-        <GridTile
-          key={sponsor.title}
-          title={sponsor.title}
-          //subtitle={<span>by <b>{tile.author}</b></span>}
-          //actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-        >
-          <img src={sponsor.img} />
-        </GridTile>
-      ))}
-    </GridList>
-  </div>
-)*/
 
 export default Sponsors;
