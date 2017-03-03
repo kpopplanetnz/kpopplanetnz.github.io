@@ -17,21 +17,10 @@ class App extends React.Component {
             margin: "auto"
         };
 
-        var socialMedia = (
-            <div>
-                <IconButton iconClassName="fa fa-facebook-official" />
-                <IconButton iconClassName="fa fa-snapchat" />
-                <IconButton iconClassName="fa fa-instagram" />
-                <IconButton iconClassName="fa fa-twitter" />
-            </div>
-        );
-
         return (
             <MuiThemeProvider>
                 <Card className="container" style={styles}>
-                    <CardMedia
-                        overlay={socialMedia}
-                    >
+                    <CardMedia>
                         <img src="./images/FB-Banner-Final.jpg"/>
                     </CardMedia>
                     <CardActions>
