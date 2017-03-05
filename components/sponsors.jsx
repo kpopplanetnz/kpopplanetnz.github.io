@@ -36,6 +36,12 @@ const sponsorList = [
         logo: './images/sponsors/bruce-lee-sushi.png',
         location: '4/18-26 Wellesley Street (Opposite to Auckland City Library)',
         about: '10% off any purchase. (Not to be used with any other discount. e.g. Special of the day)'
+    },
+    {
+        name: 'Nashi Lab',
+        logo: './images/sponsors/nashi-lab.png',
+        location: 'http://nashilab.co.nz',
+        about: 'Authentic Korean makeup that works. Sponsors prizes for events. Promo code coming soon'
     }
 ]
 
