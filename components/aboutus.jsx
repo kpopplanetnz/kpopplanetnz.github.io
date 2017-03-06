@@ -73,13 +73,13 @@ const about = [
     {
         title: "Sharmine",
         image: "./images/profile/sharmine.png",
-        position: "Soical Media Manager",
+        position: "Social Media Manager",
         about: "Hi!! Enjoy our events and lets make a good friendship ^^~"
     },
     {
         title: "Czarina",
         image: "./images/profile/czarina.jpg",
-        position: "Graphic Designer",
+        position: "Graphics Designer",
         about: "Welcome to K-pop Planet! I'm the introvert dinosaur of the club. I listen and stan alot of groups and genre. I am looking forward to meet and interact with every single one of you legendary fans!"
     },
 ]
