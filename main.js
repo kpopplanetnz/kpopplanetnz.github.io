@@ -5,12 +5,21 @@ import {Card, CardActions, CardMedia, CardTitle, CardText} from 'material-ui/Car
 import Body from './components/body.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import IconButton from 'material-ui/IconButton';
+import ReactGA from 'react-ga';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
 class App extends React.Component {
+    constructor () {
+        super();
+         // Add your tracking ID created from https://analytics.google.com/analytics/web/#home/
+        ReactGA.initialize('UA-99101004-1');
+        // This just needs to be called once since we have no routes in this case.
+        ReactGA.pageview(window.location.pathname);
+    }
+
     render () {
         var styles = {
             'maxWidth': "100%",
