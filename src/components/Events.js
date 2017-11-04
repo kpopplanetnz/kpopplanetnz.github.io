@@ -14,7 +14,7 @@ const runningClick = function() {
 const Events = () => (
 	<div>
     	<h2>Up and Coming Events</h2>
-    	<List>
+    	{/* <List>
     		<ListItem primaryText="New Member's Night"
     			secondaryText="Friday 10th March 6:30pm"
     			rightIcon={ <RaisedButton label="Details" onTouchTap={membersClick}/>}
@@ -25,7 +25,8 @@ const Events = () => (
     			secondaryText="Saturday 25th March 10am"
     			rightIcon={ <RaisedButton label="Details" onTouchTap={runningClick}/>}
 			/>
-    	</List>
+		</List> */}
+		<p>There are no more events this year, stay tuned for events in 2018</p>
 	</div>
 );
 
