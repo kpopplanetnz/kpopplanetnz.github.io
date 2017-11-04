@@ -21,9 +21,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && git config --global credential.helper wincred && gh-pages -d build -b master -m \"Build from src\""
+    "deploy": "cpx README.md public && npm run build && git config --global credential.helper wincred && gh-pages -d build -b master -m \"Build from src\""
   },
   "devDependencies": {
+    "cpx": "^1.5.0",
     "gh-pages": "^1.0.0"
   }
 }
