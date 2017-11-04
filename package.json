@@ -1,7 +1,7 @@
 {
   "name": "kpopplanetnz-website",
   "version": "2.0.0",
-  "home": "https://kpopplanetnz.github.io",
+  "homepage": "https://kpopplanetnz.github.io",
   "license": "ISC",
   "repository": {
     "type": "git",
@@ -22,5 +22,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy": "npm run build && git config --global credential.helper wincred && gh-pages -d build -b master -m \"Build from src\""
+  },
+  "devDependencies": {
+    "gh-pages": "^1.0.0"
   }
 }
