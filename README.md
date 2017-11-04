@@ -11,8 +11,6 @@ Steps to take to setup development environment
 
 Don't forget to set tabs to spaces
 
-When deploying a new version of site, remember to make sure everything works before updating index.js
-
-To update index.js run ```.\node_modules\.bin\webpack```
+To deploy the site, run run ```npm run deploy```
 
 Happy Developing
