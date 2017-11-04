@@ -49,74 +49,20 @@ const sponsorList = [
         logo: './images/sponsors/nashi-lab.png',
         location: 'http://nashilab.co.nz',
         about: 'Authentic Korean makeup that works. Sponsors prizes for events. Promo code coming soon'
+    },
+    {
+        name: 'Yohgurt Story',
+        logo: './images/sponsors/yohgurt-story.png',
+        location: '166/174 Queen St, City Centre, Auckland 1010',
+        about: '10% off any purchase.'
+    },
+    {
+        name: 'Hokkaido Baked Cheese Tart',
+        logo: './images/sponsors/hbct.jpg',
+        location: '5/350 Queen Street, Auckland 1010',
+        about: 'Buy 5 get 1 tart free.'
     }
 ];
-
-// var Sponsors = React.createClass({
-//     onResize: function(){
-//         var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-//         if(width < 800){
-//             this.setState({cols: 2})
-//         } else if (width < 1201){
-//             this.setState({cols: 3})
-//         } else if (width < 1601){
-//             this.setState({cols: 4})
-//         } else {
-//             this.setState({cols: 5})
-//         }
-//     },
-
-//     getInitialState: function() {
-//         return {
-//             cols: 2
-//         };
-//     },
-
-//     componentWillMount: function() {
-//         this.onResize();
-//     },
-//     componentDidMount: function() {
-//         window.addEventListener("resize", this.onResize);
-//     },
-//     componentWillUnmount: function() {
-//         window.removeEventListener("resize", this.onResize);
-//     },
-
-//     render: function(){
-//         return(
-//         <div style={styles.root}>
-//             <GridList
-//                 cols={this.state.cols}
-//                 cellHeight={'auto'}
-//                 padding={1}
-//                 style={styles.gridList}
-//             >
-//             {sponsorList.map((sponsor) => (
-//                 <Card
-//                     cols={1}
-//                     rows={1}
-//                     key={sponsor.name}
-//                     style={styles.card}
-//                 >
-//                     <CardMedia
-                        
-//                     >
-                        
-//                         <div style={styles.imgContainer}>
-//                             <img style={styles.logo} src={sponsor.logo}/>
-//                         </div>
-//                         <CardTitle title={sponsor.name} subtitle={sponsor.location} />
-//                     </CardMedia>
-//                     <CardText>
-//                         {sponsor.about}
-//                     </CardText>
-//                 </Card>
-//             ))}
-//             </GridList>
-//         </div>
-//         );
-//     }
-// });
 
 class Sponsors extends React.Component {
     constructor(props) {
