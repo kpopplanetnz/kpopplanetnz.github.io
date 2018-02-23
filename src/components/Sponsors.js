@@ -20,7 +20,11 @@ const styles = {
         minWidth: 'none',
     },
     imgContainer: {
+        overflow: 'hidden',
         textAlign: 'center',
+    },
+    lineBreak: {
+        whiteSpace: 'pre-line'
     }
 };
 
@@ -69,7 +73,8 @@ class Sponsors extends React.Component {
         super(props);
 
         this.state = {
-            cols: 2
+            cols: 2,
+            sponsors: []
         };
 
         this.onResize = this.onResize.bind(this);
@@ -94,6 +99,36 @@ class Sponsors extends React.Component {
 
     componentDidMount() {
         window.addEventListener("resize", this.onResize);
+        fetch("https://kpopplanet-dev.azurewebsites.net/Sponsors/Get")
+        .then(results => {
+            return results.json();
+        }).then(data => {
+            let retrievedSponsors = data.map((sponsor) => {
+                sponsor.description = sponsor.description.replace("\\n", '\n')
+                return(
+                    <Card
+                        cols={1}
+                        rows={1}
+                        key={sponsor.name}
+                        style={styles.card}
+                    >
+                        <CardMedia>
+                            <div style={styles.imgContainer}>
+                                <img style={styles.logo} src={sponsor.logoUrl} alt={sponsor.name + " Logo"}/>
+                            </div>
+                            <div>
+                                <CardTitle title={sponsor.name} subtitle={sponsor.location} />
+                            </div>
+                        </CardMedia>
+                        <CardText style={styles.lineBreak}>
+                            {sponsor.description}
+                        </CardText>
+                    </Card>
+                )
+            })
+            this.setState({sponsors: retrievedSponsors});
+            // console.log("state", this.state.sponsors);
+        })
     }
 
     componentWillUnmount() {
@@ -109,28 +144,7 @@ class Sponsors extends React.Component {
                     padding={1}
                     style={styles.gridList}
                 >
-                    {
-                        sponsorList.map((sponsor) => (
-                            <Card
-                                cols={1}
-                                rows={1}
-                                key={sponsor.name}
-                                style={styles.card}
-                            >
-                                <CardMedia>
-                                    <div style={styles.imgContainer}>
-                                        <img style={styles.logo} src={sponsor.logo} alt={sponsor.name}/>
-                                    </div>
-                                    <div>
-                                        <CardTitle title={sponsor.name} subtitle={sponsor.location} />
-                                    </div>
-                                </CardMedia>
-                                <CardText>
-                                    {sponsor.about}
-                                </CardText>
-                            </Card>
-                        ))
-                    }
+                    {this.state.sponsors}
                 </GridList>
             </div>
         );
