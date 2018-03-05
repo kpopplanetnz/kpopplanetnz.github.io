@@ -82,7 +82,9 @@ class Sponsors extends React.Component {
 
     onResize() {
         var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-        if(width < 800) {
+        if (width < 570) {
+            this.setState({cols: 1})
+        } else if(width < 800) {
             this.setState({cols: 2})
         } else if (width < 1201) {
             this.setState({cols: 3})
