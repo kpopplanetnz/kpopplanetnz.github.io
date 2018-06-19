@@ -7,6 +7,7 @@ import {Card, CardActions, CardMedia} from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // Import components
 import Body from './components/Body';
+import Footer from './components/Footer';
 // Import css / images
 import './css/site.css';
 
@@ -37,6 +38,8 @@ class App extends React.Component {
                     </CardMedia>
                     <CardActions>
                         <Body/>
+                        <hr />
+                        <Footer />
                     </CardActions>
                 </Card>
             </MuiThemeProvider>
