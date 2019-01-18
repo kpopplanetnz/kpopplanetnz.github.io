@@ -7,6 +7,7 @@
     "type": "git",
     "url": "https://github.com/kpopplanetnz/kpopplanetnz.github.io"
   },
+  "proxy": "http://localhost:3001/",
   "dependencies": {
     "material-ui": "^0.19.4",
     "react": "^16.0.0",
