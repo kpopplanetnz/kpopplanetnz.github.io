@@ -4,6 +4,7 @@ import Home from './Home';
 import Sponsors from './Sponsors';
 import AboutUs from './AboutUs';
 import Events from './Events';
+import ContactUs from './ContactUs';
 
 const Body = () => (
     <Tabs>
@@ -19,6 +20,9 @@ const Body = () => (
         <Tab label="About Us">
             <AboutUs/>
         </Tab>
+        {/* <Tab label="Contact Us">
+            <ContactUs/>
+        </Tab> */}
     </Tabs>
 );
 
