@@ -1,9 +1,6 @@
 import React from 'react';
-import {List, ListItem} from 'material-ui/List';
-import RaisedButton from 'material-ui/RaisedButton';
-import Divider from 'material-ui/Divider';
-import {GridList} from 'material-ui/GridList';
-import {Card, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {GridList} from '@material-ui/core';
+import EventCard from './EventCard';
 
 const membersClick = function() {
 	window.open("https://www.facebook.com")
@@ -86,27 +83,8 @@ class Events extends React.Component {
 			return results.json();
 		}).then(data => {
 			const retrievedEvents = data.map((event) => {
-				const subtitle = event.location + " | " + event.startDateTime + " - " + event.endDateTime;
 				return(
-                    <Card
-                        cols={1}
-                        rows={1}
-                        key={event.eventID}
-                        style={styles.card}
-                    >
-                        {/* <CardMedia>
-                            <div style={styles.imgContainer}>
-                                <img style={styles.logo} src={sponsor.logoUrl} alt={sponsor.name + " Logo"}/>
-                            </div>
-                            <div>
-                                
-                            </div>
-                        </CardMedia> */}
-						<CardTitle title={event.name} subtitle={subtitle} />
-                        <CardText style={styles.lineBreak}>
-							<p>{event.description}</p>
-                        </CardText>
-                    </Card>
+                    <EventCard key={event._id} event={event}/>
                 )
 			});
 			this.setState({events: retrievedEvents});
