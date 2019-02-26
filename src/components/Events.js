@@ -81,7 +81,7 @@ class Events extends React.Component {
 		// 	js.src = "https://connect.facebook.net/en_US/sdk.js";
 		// 	fjs.parentNode.insertBefore(js, fjs);
 		// }(document, 'script', 'facebook-jssdk'));
-		fetch("http://localhost:3001/event")
+		fetch("http://localhost:3001/api/events")
 		.then(results => {
 			return results.json();
 		}).then(data => {
@@ -114,6 +114,11 @@ class Events extends React.Component {
 	}
 
 	render() {
+		let events = this.state.events;
+		if (this.state.events === undefined || this.state.events.length == 0) {
+			events = <p>There are currently no events scheduled.</p>;
+		}
+
 		return (
 			<div>
 				<h2>Up and Coming Events</h2>
@@ -137,7 +142,8 @@ class Events extends React.Component {
 						padding={1}
 						style={styles.gridList}
 					>
-						{this.state.events}
+						{events}
+						
 					</GridList>
 				</div>
 			</div>
