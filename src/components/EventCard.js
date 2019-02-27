@@ -1,11 +1,14 @@
 import React from 'react';
-import {Card, CardMedia, CardText, Typography} from 'material-ui/Card';
-import {CardHeader, IconButton} from '@material-ui/core/';
-// import IconButton from '@material-ui/core/IconButton';
+import {Card, CardHeader, CardMedia, CardText, CardTitle} from 'material-ui/Card';
+// import {Card, CardHeader, IconButton, Typography} from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 const styles = {
-
+    // lineBreak: {
+    //     whiteSpace: 'pre-line'
+    // }
 }
 
 class EventCard extends React.Component {
@@ -26,7 +29,7 @@ class EventCard extends React.Component {
                 rows={1}
                 style={styles.card}
             >
-                <CardHeader
+                {/* <CardHeader
                     action={
                         <IconButton>
                             <MoreVertIcon />
@@ -34,7 +37,7 @@ class EventCard extends React.Component {
                     }
                     title={event.name}
                     subheader={subtitle}
-                    />
+                    /> */}
                 {/* <CardMedia>
                     <div style={styles.imgContainer}>
                         <img style={styles.logo} src={sponsor.logoUrl} alt={sponsor.name + " Logo"}/>
@@ -43,13 +46,13 @@ class EventCard extends React.Component {
                         
                     </div>
                 </CardMedia> */}
-                {/* <CardTitle title={event.name} subtitle={subtitle} /> */}
-                {/* <CardText style={styles.lineBreak}>
+                <CardTitle title={event.name} subtitle={subtitle} />
+                <CardText style={styles.lineBreak}>
                     <p>{event.description}</p>
-                </CardText> */}
-                <Typography paragraph>
+                </CardText>
+                {/* <Typography paragraph>
                     {event.description}
-                </Typography>
+                </Typography> */}
             </Card>
         )
     }

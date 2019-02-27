@@ -1,5 +1,9 @@
 import React from 'react';
-import {GridList} from '@material-ui/core';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import GridList from '@material-ui/core/GridList';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import EventCard from './EventCard';
 
 const membersClick = function() {
@@ -28,6 +32,17 @@ const runningClick = function() {
 	// 	<p>There are no more events this year, stay tuned for events in 2018</p>
 	// </div>
 // );
+
+const css = theme => ({
+	root: {
+		flexGrow: 1,
+	},
+	paper: {
+		padding: theme.spacing.unit * 2,
+		textAlign: 'center',
+		color: theme.palette.text.secondary,
+	}
+});
 
 const styles = {
     root: {
@@ -84,7 +99,7 @@ class Events extends React.Component {
 		}).then(data => {
 			const retrievedEvents = data.map((event) => {
 				return(
-                    <EventCard key={event._id} event={event}/>
+                    <EventCard cols={1} rows={1} key={event._id} event={event}/>
                 )
 			});
 			this.setState({events: retrievedEvents});
@@ -96,6 +111,8 @@ class Events extends React.Component {
 		if (this.state.events === undefined || this.state.events.length == 0) {
 			events = <p>There are currently no events scheduled.</p>;
 		}
+
+		const { classes } = this.props;
 
 		return (
 			<div>
@@ -113,7 +130,7 @@ class Events extends React.Component {
 					/>
 				</List> */}
 				{/* <p>There are no more events this year, stay tuned for events in 2018</p> */}
-				<div style={styles.root}>
+				{/* <div style={styles.root}>
 					<GridList
 						cols={this.state.cols}
 						cellHeight={'auto'}
@@ -123,10 +140,21 @@ class Events extends React.Component {
 						{events}
 						
 					</GridList>
+				</div> */}
+				<div className={classes.root}>
+					<Grid container spacing={24}>
+						<Grid item xs={12}>
+							<Paper className={classes.paper}>xs=12</Paper>
+						</Grid>
+					</Grid>
 				</div>
 			</div>
 		);
 	}
 }
 
-export default Events;
+Events.propTypes = {
+	classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Events);

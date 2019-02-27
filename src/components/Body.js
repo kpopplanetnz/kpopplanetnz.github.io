@@ -1,10 +1,12 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
+import {Route, Link, Switch, withRouter} from 'react-router-dom';
 import {Tabs, Tab} from 'material-ui/Tabs';
+// import {Tabs, Tab} from '@material-ui/core'
 import Home from './Home';
 import Sponsors from './Sponsors';
 import AboutUs from './AboutUs';
 import Events from './Events';
+import NotFound from './NotFound';
 import ContactUs from './ContactUs';
 
 class Body extends React.Component {
@@ -14,26 +16,36 @@ class Body extends React.Component {
      
     render() {
         return(
-            <Tabs
-                value={this.props.history.location.pathname}
-                onChange={this.handleCallToRouter}
-                >
-                `<Tab label="Home" value="/">
-                    <Home/>
-                </Tab>
-                <Tab label="Events" value="/events">
-                    <Events/>
-                </Tab>
-                <Tab label="Sponsors" value="/sponsors">
-                    <Sponsors/>
-                </Tab>
-                <Tab label="About Us" value="/aboutus">
-                    <AboutUs/>
-                </Tab>
-                {/* <Tab label="Contact Us">
-                    <ContactUs/>
-                </Tab> */}
-            </Tabs>
+            <div>
+                <Tabs
+                    // value={this.props.history.location.pathname}
+                    // onChange={this.handleCallToRouter}
+                    // variant="fullWidth"
+                    >
+                    `<Tab label="Home" component={Link} to="/">
+                        {/* <Home/> */}
+                    </Tab>
+                    <Tab label="Events" component={Link} to="/events">
+                        {/* <Events/> */}
+                    </Tab>
+                    <Tab label="Sponsors" component={Link} to="/sponsors">
+                        {/* <Sponsors/> */}
+                    </Tab>
+                    <Tab label="About Us" component={Link} to="/about">
+                        {/* <AboutUs/> */}
+                    </Tab>
+                    {/* <Tab label="Contact Us">
+                        <ContactUs/>
+                    </Tab> */}
+                </Tabs>
+                <Switch>
+                    <Route exact path="/" Component={Home}/>
+                    <Route path="/events" Component={Events}/>
+                    <Route path="/sponsors" Component={Sponsors}/>
+                    <Route path="/about" Component={AboutUs}/>
+                    <Route Component={NotFound}/>
+                </Switch>
+            </div>
         );
     }
 }
