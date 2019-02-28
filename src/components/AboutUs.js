@@ -199,6 +199,7 @@ class AboutUs extends React.Component {
                                 key={data.title}
                             >
                                 <CardMedia
+                                    component="img"
                                     image={data.image}
                                     title={data.title}
                                 >

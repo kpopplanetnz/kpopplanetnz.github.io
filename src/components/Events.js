@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import EventCard from './EventCard';
+import { Typography } from '@material-ui/core';
 
 // const Events = () => (
 	// <div>
@@ -106,7 +107,9 @@ class Events extends React.Component {
 
 		return (
 			<div>
-				<h2>Up and Coming Events</h2>
+				<Typography variant="h5" component="h2">
+					Up and Coming Events
+				</Typography>
 				{/* <List>
 					<ListItem primaryText="New Member's Night"
 						secondaryText="Friday 10th March 6:30pm"

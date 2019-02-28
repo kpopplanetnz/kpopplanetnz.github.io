@@ -28,10 +28,6 @@ const theme = createMuiTheme({
 });
 
 const styles = theme => ({
-    container: {
-        maxWidth: "100%",
-        margin: "auto",
-    },
     layout: {
         width: 'auto',
         [theme.breakpoints.up("sm")]: {
