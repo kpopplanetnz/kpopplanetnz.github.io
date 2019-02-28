@@ -1,6 +1,6 @@
 import React from 'react';
-import {GridList} from 'material-ui/GridList';
-import {Card, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import GridList from '@material-ui/core/GridList';
+import {Card, CardMedia, Typography} from '@material-ui/core';
 
 const styles = {
     root: {
@@ -198,14 +198,21 @@ class AboutUs extends React.Component {
                                 rows={1}
                                 key={data.title}
                             >
-                                <CardMedia overlay={
-                                    <CardTitle title={data.title} subtitle={data.position} />
-                                }>
-                                    <img src={data.image} alt={data.title}/>
+                                <CardMedia
+                                    image={data.image}
+                                    title={data.title}
+                                >
+                                    {/* <img src={data.image} alt={data.title}/> */}
                                 </CardMedia>
-                                <CardText>
+                                <Typography gutterBottom variant="h6" component="h2">
+                                    {data.title}
+                                </Typography>
+                                <Typography gutterBottom variant="subtitle2" component="h3">
+                                    {data.position}
+                                </Typography>
+                                <Typography paragraph>
                                     {data.about}
-                                </CardText>
+                                </Typography>
                             </Card>
                         ))
                     }

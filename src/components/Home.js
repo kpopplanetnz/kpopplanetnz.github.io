@@ -1,6 +1,6 @@
 import React from 'react';
 import ImageGallery from 'react-image-gallery';
-import Divider from 'material-ui/Divider';
+import Divider from '@material-ui/core/Divider';
 
 import '../css/image-gallery.css';
 

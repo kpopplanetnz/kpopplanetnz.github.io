@@ -1,8 +1,10 @@
 import React from 'react';
-import {GridList} from 'material-ui/GridList';
-import {Card, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import GridList from '@material-ui/core/GridList';
+import {Card, CardMedia, CardTitle, Typography} from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles' 
+import PropTypes from 'prop-types';
 
-const styles = {
+const styles = theme => ({
     root: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -25,8 +27,17 @@ const styles = {
     },
     lineBreak: {
         whiteSpace: 'pre-line'
+    },
+    card: {
+        padding: 20,
+    },
+    media: {
+        height: 250,
+        width: "auto",
+        marginLeft: "auto",
+        marginRight: "auto"
     }
-};
+});
 
 const sponsorList = [
     {
@@ -100,6 +111,8 @@ class Sponsors extends React.Component {
     }
 
     componentDidMount() {
+        const { classes } = this.props;
+
         window.addEventListener("resize", this.onResize);
         fetch("https://kpopplanet-dev.azurewebsites.net/Sponsors/Get")
         .then(results => {
@@ -109,22 +122,32 @@ class Sponsors extends React.Component {
                 sponsor.description = sponsor.description.replace("\\n", '\n')
                 return(
                     <Card
-                        cols={1}
-                        rows={1}
                         key={sponsor.name}
-                        style={styles.card}
+                        // style={styles.card}
+                        className={classes.card}
                     >
-                        <CardMedia>
-                            <div style={styles.imgContainer}>
+                        <CardMedia
+                            className={classes.media}
+                            component="img"
+                            image={sponsor.logoUrl}
+                            title={sponsor.name + " Logo"}
+                        >
+                            {/* <div style={styles.imgContainer}>
                                 <img style={styles.logo} src={sponsor.logoUrl} alt={sponsor.name + " Logo"}/>
                             </div>
                             <div>
                                 <CardTitle title={sponsor.name} subtitle={sponsor.location} />
-                            </div>
+                            </div> */}
                         </CardMedia>
-                        <CardText style={styles.lineBreak}>
+                        <Typography variant="h6" component="h2">
+                            {sponsor.name}
+                        </Typography>
+                        <Typography gutterBottom variant="caption" component="p">
+                            {sponsor.location}
+                        </Typography>
+                        <Typography paragraph style={styles.lineBreak}>
                             {sponsor.description}
-                        </CardText>
+                        </Typography>
                     </Card>
                 )
             })
@@ -138,13 +161,16 @@ class Sponsors extends React.Component {
     }
 
     render() {
+        const { classes } = this.props;
         return(
-            <div style={styles.root}>
+            <div className={classes.root}>
                 <GridList
                     cols={this.state.cols}
                     cellHeight={'auto'}
                     padding={1}
-                    style={styles.gridList}
+                    spacing={30}
+                    // style={styles.gridList}
+                    className={classes.gridList}
                 >
                     {this.state.sponsors}
                 </GridList>
@@ -153,4 +179,8 @@ class Sponsors extends React.Component {
     }
 }
 
-export default Sponsors;
+Sponsors.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Sponsors);

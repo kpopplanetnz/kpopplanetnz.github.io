@@ -1,18 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import GridList from '@material-ui/core/GridList';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import EventCard from './EventCard';
-
-const membersClick = function() {
-	window.open("https://www.facebook.com")
-};
-
-const runningClick = function() {
-	window.open("https://www.facebook.com")
-};
 
 // const Events = () => (
 	// <div>
@@ -144,7 +134,7 @@ class Events extends React.Component {
 				<div className={classes.root}>
 					<Grid container spacing={24}>
 						<Grid item xs={12}>
-							<Paper className={classes.paper}>xs=12</Paper>
+							{/* <Paper className={classes.paper}>xs=12</Paper> */}
 						</Grid>
 					</Grid>
 				</div>
