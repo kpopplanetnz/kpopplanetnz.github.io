@@ -1,7 +1,8 @@
 import React from 'react';
+import { Typography } from '@material-ui/core';
 
 function NotFound() {
-    return <h1>Error - Page Not Found</h1>;
+    return <Typography variant="h3" component="h1" style={{textAlign: "center"}}>Error - Page Not Found</Typography>;
 }
 
 export default NotFound;
