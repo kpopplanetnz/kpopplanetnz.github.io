@@ -1,40 +1,51 @@
 // Import react related stuff
 import React from 'react';
-import {BrowserRouter} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import ReactGA from 'react-ga';
-import injectTapEventPlugin from 'react-tap-event-plugin';
+// import injectTapEventPlugin from 'react-tap-event-plugin';
 // Import material ui related stuff
-// import {Card, CardActions, CardMedia} from 'material-ui/Card';
-import {Card, CardActions, CardMedia} from '@material-ui/core'
-// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import lightBlue from '@material-ui/core/colors/lightBlue';
 // Import components
+import NavBar from './components/NavBar';
 import Body from './components/Body';
-import NavTabs from './components/NavTabs';
 import Footer from './components/Footer';
 // Import css / images
 import './css/site.css';
+import { CssBaseline, Paper } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
-injectTapEventPlugin();
+// injectTapEventPlugin();
 
 const theme = createMuiTheme({
     palette: {
-        primary: lightBlue
+        primary: {
+            main: "#00bcd4",
+             contrastText: "#fff"
+        }
     }
 });
 
-const styles = {
+const styles = theme => ({
     container: {
         maxWidth: "100%",
         margin: "auto",
     },
-    banner: {
-        maxWidth: "100%"
+    layout: {
+        width: 'auto',
+        [theme.breakpoints.up("sm")]: {
+          width: "80%",
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }
+    },
+    page: {
+        ...theme.mixins.gutters(),
+        paddingTop: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing.unit * 2,
     }
-};
+});
 
 class App extends React.Component {
     constructor () {
@@ -46,26 +57,24 @@ class App extends React.Component {
     }
 
     render () {
-        
+        const { classes } = this.props;
 
         return (
             <MuiThemeProvider theme={theme}>
+                <CssBaseline />
                 <BrowserRouter>
-                    <Card className="container" style={styles.container}>
-                        <CardMedia>
-                            <img style={styles.banner} src="./images/FB-Banner-Final.jpg" alt="Banner"/>
-                        </CardMedia>
-                        <CardActions>
+                    <div className={classes.layout}>
+                        
+                        <NavBar />
+                        <Paper className={classes.page} square={true}>
                             <Body/>
-                            {/* <NavTabs /> */}
-                            <hr />
                             <Footer />
-                        </CardActions>
-                    </Card>
+                        </Paper>
+                    </div>
                 </BrowserRouter>
             </MuiThemeProvider>
         );
     }
 }
 
-export default App;
+export default withStyles(styles)(App);
