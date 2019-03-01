@@ -24,43 +24,24 @@ import { Typography } from '@material-ui/core';
 	// </div>
 // );
 
-const css = theme => ({
+
+const styles = theme => ({
 	root: {
 		flexGrow: 1,
 	},
-	paper: {
-		padding: theme.spacing.unit * 2,
-		textAlign: 'center',
-		color: theme.palette.text.secondary,
-	}
+	// paper: {
+	// 	padding: theme.spacing.unit * 2,
+	// 	textAlign: 'center',
+	// 	color: theme.palette.text.secondary,
+	// }
 });
-
-const styles = {
-    root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-around',
-    },
-    gridList: {
-        //width: 500,
-        //height: 450,
-        overflowY: 'auto',
-    },
-    imgContainer: {
-        overflow: 'hidden',
-        textAlign: 'center',
-    },
-    lineBreak: {
-        whiteSpace: 'pre-line'
-    }
-};
 
 class Events extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-            cols: 1,
+            loading: true,
             events: []
         };
 	}
@@ -88,60 +69,38 @@ class Events extends React.Component {
 		.then(results => {
 			return results.json();
 		}).then(data => {
-			const retrievedEvents = data.map((event) => {
-				return(
-                    <EventCard cols={1} rows={1} key={event._id} event={event}/>
-                )
-			});
-			this.setState({events: retrievedEvents});
+			// const retrievedEvents = data.map((event) => {
+			// 	return(
+            //         <EventCard cols={1} rows={1} key={event._id} event={event}/>
+            //     )
+			// });
+			this.setState({events: data});
 		});
+		this.setState({loading: false});
 	}
 
 	render() {
-		let events = this.state.events;
-		if (this.state.events === undefined || this.state.events.length == 0) {
-			events = <p>There are currently no events scheduled.</p>;
-		}
-
 		const { classes } = this.props;
 
 		return (
-			<div>
-				<Typography variant="h5" component="h2">
-					Up and Coming Events
-				</Typography>
-				{/* <List>
-					<ListItem primaryText="New Member's Night"
-						secondaryText="Friday 10th March 6:30pm"
-						rightIcon={ <RaisedButton label="Details" onTouchTap={membersClick}/>}
-						
-					/>
-					<Divider/>
-					<ListItem primaryText="Running Man"
-						secondaryText="Saturday 25th March 10am"
-						rightIcon={ <RaisedButton label="Details" onTouchTap={runningClick}/>}
-					/>
-				</List> */}
-				{/* <p>There are no more events this year, stay tuned for events in 2018</p> */}
-				{/* <div style={styles.root}>
-					<GridList
-						cols={this.state.cols}
-						cellHeight={'auto'}
-						padding={1}
-						style={styles.gridList}
-					>
-						{events}
-						
-					</GridList>
-				</div> */}
-				<div className={classes.root}>
-					<Grid container spacing={24}>
-						<Grid item xs={12}>
-							{/* <Paper className={classes.paper}>xs=12</Paper> */}
-						</Grid>
-					</Grid>
-				</div>
-			</div>
+			<Grid container spacing={24} justify="center">
+				<Grid item xs={12}>
+					<Typography variant="h5" align="center" component="h1">
+						Up and Coming Events
+					</Typography>
+				</Grid>
+				{
+					this.state.loading 
+					? <Typography gutterBottom variant="caption" component="p">Loading in progress</Typography> 
+					: this.state.events === undefined || this.state.events.length == 0
+						? <Typography gutterBottom variant="body1" component="p">No events available at the moment :(</Typography>
+						: this.state.events.map((event) => {
+							return(
+								<EventCard key={event._id} event={event}/>
+							);		
+						})
+				}
+			</Grid>
 		);
 	}
 }

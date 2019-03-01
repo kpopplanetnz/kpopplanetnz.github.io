@@ -1,15 +1,5 @@
 import React from 'react';
-import {Card, CardHeader, CardMedia, CardText, CardTitle} from 'material-ui/Card';
-// import {Card, CardHeader, IconButton, Typography} from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-
-const styles = {
-    // lineBreak: {
-    //     whiteSpace: 'pre-line'
-    // }
-}
+import {Card, CardContent, Typography } from '@material-ui/core';
 
 class EventCard extends React.Component {
     state = { expanded: false };
@@ -22,12 +12,9 @@ class EventCard extends React.Component {
         const { event } = this.props;
         console.log(event)
         const subtitle = event.location + " | " + event.startDateTime + " - " + event.endDateTime
-        
         return(
             <Card
-                cols={1}
-                rows={1}
-                style={styles.card}
+                elevation={3}
             >
                 {/* <CardHeader
                     action={
@@ -46,13 +33,17 @@ class EventCard extends React.Component {
                         
                     </div>
                 </CardMedia> */}
-                <CardTitle title={event.name} subtitle={subtitle} />
-                <CardText style={styles.lineBreak}>
-                    <p>{event.description}</p>
-                </CardText>
-                {/* <Typography paragraph>
-                    {event.description}
-                </Typography> */}
+                <CardContent>
+                    <Typography gutterBottom variant="h6" component="h2">
+                        {event.name}
+                    </Typography>
+                    <Typography gutterBottom variant="subtitle2" component="h3">
+                        {subtitle}
+                    </Typography>
+                    <Typography paragraph>
+                        {event.description}
+                    </Typography>
+                </CardContent>
             </Card>
         )
     }
