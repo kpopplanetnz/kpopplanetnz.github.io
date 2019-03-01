@@ -23,6 +23,7 @@ const styles = theme => ({
         width: '100%',
         height: '100%'
     },
+    // https://spin.atomicobject.com/2015/07/14/css-responsive-square/
     square: {
         position: 'relative',
         // maxWidth: '250px',
