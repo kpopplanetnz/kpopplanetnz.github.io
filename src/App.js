@@ -1,6 +1,6 @@
 // Import react related stuff
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 import ReactGA from 'react-ga';
 // import injectTapEventPlugin from 'react-tap-event-plugin';
 // Import material ui related stuff
@@ -24,6 +24,9 @@ const theme = createMuiTheme({
             main: "#00bcd4",
              contrastText: "#fff"
         }
+    },
+    typography: {
+        useNextVariants: true,
     }
 });
 
@@ -60,7 +63,6 @@ class App extends React.Component {
                 <CssBaseline />
                 <BrowserRouter>
                     <div className={classes.layout}>
-                        
                         <NavBar />
                         <Paper className={classes.page} square={true}>
                             <Body/>
