@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
-import {Link, withRouter} from 'react-router-dom';
-import { AppBar, Tabs, Tab} from '@material-ui/core'
+import { Link, withRouter } from 'react-router-dom';
+import { AppBar, Hidden, Tabs, Tab} from '@material-ui/core'
+import { Home, EventNote, Star, Info, ContactSupport } from '@material-ui/icons';
 
 const styles = {
     banner: {
@@ -23,15 +24,38 @@ class NavBar extends React.Component {
                     <Tabs
                         value={this.props.history.location.pathname}
                         onChange={this.handleCallToRouter}
-                        variant="fullWidth"  
+                        variant="fullWidth"
                         >
-                    `   <Tab label="Home" component={Link} value="/" to="/" />
-                        <Tab label="Events" component={Link} value="/events" to="/events" />
-                        <Tab label="Sponsors" component={Link} value="/sponsors" to="/sponsors" />
-                        <Tab label="About Us" component={Link} value="/about" to="/about" />
-                        {/* <Tab label="Contact Us">
-                            <ContactUs/>
-                        </Tab> */}
+                        <Tab component={Link} value="/" to="/" icon={<Home />}
+                            label={
+                                <Hidden only="xs">
+                                    Home
+                                </Hidden>
+                            }/>
+                        <Tab component={Link} value="/events" to="/events" icon={<EventNote />}
+                            label={
+                                <Hidden only="xs">
+                                    Events
+                                </Hidden>
+                            }/>
+                        <Tab component={Link} value="/sponsors" to="/sponsors" icon={<Star />}
+                            label={
+                                <Hidden only="xs">
+                                    Sponsors
+                                </Hidden>
+                            }/>
+                        <Tab component={Link} value="/about" to="/about" icon={<Info />}
+                             label={
+                                <Hidden only="xs">
+                                    About
+                                </Hidden>
+                             }/>
+                        <Tab component={Link} value="/contact" to="/contact" icon={<ContactSupport />}
+                            label={
+                                <Hidden only="xs">
+                                    Contact
+                                </Hidden>
+                            }/>
                     </Tabs>
                 </AppBar>
             </Fragment>
