@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import EventCard from './EventCard';
 import { Typography } from '@material-ui/core';
+
+import LoadError from './error/LoadError';
 
 // const Events = () => (
 	// <div>
@@ -41,9 +43,10 @@ class Events extends React.Component {
 		super(props);
 
 		this.state = {
-            loading: true,
-            events: []
-        };
+        	isLoading: true,
+			events: [],
+			error: null
+		};
 	}
 
 	componentDidMount() {
@@ -66,41 +69,50 @@ class Events extends React.Component {
 		// 	fjs.parentNode.insertBefore(js, fjs);
 		// }(document, 'script', 'facebook-jssdk'));
 		fetch("http://localhost:3001/api/events")
-		.then(results => {
-			return results.json();
-		}).then(data => {
-			// const retrievedEvents = data.map((event) => {
-			// 	return(
-            //         <EventCard cols={1} rows={1} key={event._id} event={event}/>
-            //     )
-			// });
-			this.setState({events: data});
-		});
-		this.setState({loading: false});
+		.then(results => results.json())
+		.then(data => {
+			this.setState({
+                events: data,
+                isLoading: false
+            });
+		})
+		.catch(error => {
+            console.error(error);
+            this.setState({
+                error,
+                isLoading: false
+            });
+        });
 	}
 
 	render() {
 		const { classes } = this.props;
+		const { isLoading, events, error } = this.state;
 
 		return (
-			<Grid container spacing={24} justify="center">
+			<Fragment>
 				<Grid item xs={12}>
 					<Typography variant="h5" align="center" component="h1">
 						Up and Coming Events
 					</Typography>
 				</Grid>
-				{
-					this.state.loading 
-					? <Typography gutterBottom variant="caption" component="p">Loading in progress</Typography> 
-					: this.state.events === undefined || this.state.events.length == 0
-						? <Typography gutterBottom variant="body1" component="p">No events available at the moment :(</Typography>
-						: this.state.events.map((event) => {
+				{error ? <LoadError message="Unable to load events" /> : null}
+
+				{!isLoading ? 
+					(	
+						events.length == 0 && !error ? <Typography gutterBottom variant="body1" component="p">No events available at the moment :(</Typography> : 
+						events.map((event) => {
 							return(
-								<EventCard key={event._id} event={event}/>
+								<Grid item key={event._id} xs={12}>
+									<EventCard event={event}/>
+								</Grid>
 							);		
 						})
+					) : (
+						<Typography gutterBottom variant="caption" component="p">Loading in progress</Typography>
+					)
 				}
-			</Grid>
+			</Fragment>
 		);
 	}
 }
