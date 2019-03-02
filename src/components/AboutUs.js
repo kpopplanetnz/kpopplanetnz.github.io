@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {Card, CardContent, CardMedia, Grid, Typography} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import LoadError from './error/LoadError';
 
 const styles = theme => ({
     // Make sure all cards have same height
@@ -95,88 +96,59 @@ class AboutUs extends React.Component {
         super(props);
 
         this.state = {
-            loading: false,
-            about: about
+            isLoading: false,
+            profiles: about,
+            error: null
         };
     }
 
     render() {
         const { classes } = this.props;
+        const { isLoading, profiles, error } = this.state;
+
         return(
-            <Grid container spacing={24} justify="center">
+            <Fragment>
                 <Grid item xs={12}>
 					<Typography variant="h5" align="center" component="h1">
 						Staff
 					</Typography>
 				</Grid>
-                {
-                    this.state.loading 
-                    ? <Typography gutterBottom variant="caption" component="p">Loading in progress</Typography> 
-                    : this.state.about === undefined || this.state.about.length == 0
-                        ? <Typography gutterBottom variant="body1" component="p">Unable to load staff</Typography>
-                        : this.state.about.map((data) => {
-                        return (
-                            <Grid item key={data._id} xs={11} sm={6} md={4} lg={3}>
-                                <Card
-                                    className={classes.card}
-                                    elevation={3}
-                                >
-                                    <CardMedia
-                                        component="img"
-                                        image={data.image}
-                                        title={data.title}
-                                    />
-                                    <CardContent>
-                                        <Typography gutterBottom variant="h6" component="h2">
-                                            {data.title}
-                                        </Typography>
-                                        <Typography gutterBottom variant="subtitle2" component="h3">
-                                            {data.position}
-                                        </Typography>
-                                        <Typography paragraph>
-                                            {data.about}
-                                        </Typography>
-                                    </CardContent>
-                                </Card>
-                            </Grid>
-                        );
-                })}
-            </Grid>
-            // <div style={styles.root}>
-            //     <GridList
-            //         cols={this.state.cols}
-            //         cellHeight={'auto'}
-            //         padding={1}
-            //         style={styles.gridList}
-            //     >
-            //         {
-            //             about.map((data) => (
-            //                 <Card
-            //                     cols={1}
-            //                     rows={1}
-            //                     key={data.title}
-            //                 >
-            //                     <CardMedia
-            //                         component="img"
-            //                         image={data.image}
-            //                         title={data.title}
-            //                     >
-            //                         {/* <img src={data.image} alt={data.title}/> */}
-            //                     </CardMedia>
-            //                     <Typography gutterBottom variant="h6" component="h2">
-            //                         {data.title}
-            //                     </Typography>
-            //                     <Typography gutterBottom variant="subtitle2" component="h3">
-            //                         {data.position}
-            //                     </Typography>
-            //                     <Typography paragraph>
-            //                         {data.about}
-            //                     </Typography>
-            //                 </Card>
-            //             ))
-            //         }
-            //     </GridList>
-            // </div>
+                {error ? <LoadError message="Unable to load staff" /> : null}
+
+                {!isLoading ? 
+                    ( 
+                        profiles.map((profile) => {
+                            return (
+                                <Grid item key={profile._id} xs={11} sm={6} md={4} lg={3}>
+                                    <Card
+                                        className={classes.card}
+                                        elevation={3}
+                                    >
+                                        <CardMedia
+                                            component="img"
+                                            image={profile.image}
+                                            title={profile.title + "'s image"}
+                                        />
+                                        <CardContent>
+                                            <Typography gutterBottom variant="h6" component="h2">
+                                                {profile.title}
+                                            </Typography>
+                                            <Typography gutterBottom variant="subtitle2" component="h3">
+                                                {profile.position}
+                                            </Typography>
+                                            <Typography paragraph>
+                                                {profile.about}
+                                            </Typography>
+                                        </CardContent>
+                                    </Card>
+                                </Grid>
+                            );
+                        })
+                    ) : (
+                        <Typography gutterBottom variant="caption" component="p">Loading in progress</Typography> 
+                    )
+                }
+            </Fragment>
         );
     }
 }

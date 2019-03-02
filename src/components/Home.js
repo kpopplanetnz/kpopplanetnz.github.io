@@ -3,6 +3,7 @@ import ImageGallery from 'react-image-gallery';
 import Divider from '@material-ui/core/Divider';
 
 import '../css/image-gallery.css';
+import { Grid } from '@material-ui/core';
 
 const images = [
     {
@@ -24,7 +25,7 @@ const images = [
 ]
 
 const Home = () => (
-    <div>
+    <Grid item xs={12} sm={10}>
         <ImageGallery 
             items={images}
             sliderInterval={1000}
@@ -32,7 +33,7 @@ const Home = () => (
             showThumbnails={false}
         />
         <Divider/>
-    </div>
+    </Grid>
 );
 
 export default Home;

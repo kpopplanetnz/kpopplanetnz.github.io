@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {Card, CardContent, CardMedia, Grid, Typography} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles' 
 import PropTypes from 'prop-types';
+import LoadError from './error/LoadError';
 
 const styles = theme => ({
     logo: {
@@ -40,71 +41,83 @@ class Sponsors extends React.Component {
         super(props);
 
         this.state = {
-            loading: true,
-            sponsors: []
+            isLoading: true,
+            sponsors: [],
+            error: null
         };
     }
 
     componentDidMount() {
         // fetch("https://kpopplanet-dev.azurewebsites.net/Sponsors/Get")
         fetch("http://localhost:3001/api/sponsors")
-        .then(results => {
-            return results.json();
-        }).then(data => {
-            this.setState({sponsors: data});
+        .then(results => results.json())
+        .then(data => {
+            this.setState({
+                sponsors: data,
+                isLoading: false
+            });
             // console.log("state", this.state.sponsors);
         })
-        this.setState({loading: false});
+        .catch(error => {
+            console.error(error);
+            this.setState({
+                error,
+                isLoading: false
+            });
+        });
     }
 
     render() {
         const { classes } = this.props;
+        const { isLoading, sponsors, error } = this.state;
         // console.log(this.state.sponsors);
         return(
-            <Grid container spacing={24} justify="center">
+            <Fragment>
                 <Grid item xs={12}>
 					<Typography variant="h5" align="center" component="h1">
 						Sponsors
 					</Typography>
 				</Grid>
-                {
-                    this.state.loading 
-                    ? <Typography gutterBottom variant="caption" component="p">Loading in progress</Typography> 
-                    : this.state.sponsors === undefined || this.state.sponsors.length == 0
-                        ? <Typography gutterBottom variant="body1" component="p">Unable to load sponsors</Typography>
-                        : this.state.sponsors.map((sponsor) => {
-                        sponsor.description = sponsor.description.replace("\\n", '\n');
-                            return (
-                                <Grid item key={sponsor.name} xs={11} sm={6} md={4} lg={3}>
-                                    <Card
-                                        className={classes.card}
-                                        elevation={3}
-                                    >
-                                        <div className={classes.square}>
-                                            <CardMedia
-                                                className={classes.media}
-                                                component="img"
-                                                image={sponsor.logoUrl}
-                                                title={sponsor.name + " Logo"}
-                                            />
-                                        </div>
-                                        <CardContent>
-                                            <Typography variant="h6" component="h2">
-                                                {sponsor.name}
-                                            </Typography>
-                                            <Typography gutterBottom variant="caption" component="p">
-                                                {sponsor.location}
-                                            </Typography>
-                                            <Typography paragraph style={styles.lineBreak}>
-                                                {sponsor.description}
-                                            </Typography>
-                                        </CardContent>
-                                    </Card>
-                                </Grid>
-                            );
+                {error ? <LoadError message="Unable to load sponsors" /> : null}
+                
+                {!isLoading ? 
+                    (
+                        sponsors.map((sponsor) => {
+                            sponsor.description = sponsor.description.replace("\\n", '\n');
+                                return (
+                                    <Grid item key={sponsor.name} xs={11} sm={6} md={4} lg={3}>
+                                        <Card
+                                            className={classes.card}
+                                            elevation={3}
+                                        >
+                                            <div className={classes.square}>
+                                                <CardMedia
+                                                    className={classes.media}
+                                                    component="img"
+                                                    image={sponsor.logoUrl}
+                                                    title={sponsor.name + " Logo"}
+                                                />
+                                            </div>
+                                            <CardContent>
+                                                <Typography variant="h6" component="h2">
+                                                    {sponsor.name}
+                                                </Typography>
+                                                <Typography gutterBottom variant="caption" component="p">
+                                                    {sponsor.location}
+                                                </Typography>
+                                                <Typography paragraph style={styles.lineBreak}>
+                                                    {sponsor.description}
+                                                </Typography>
+                                            </CardContent>
+                                        </Card>
+                                    </Grid>
+                                );
                         })
+                    ) : (
+                        <Typography gutterBottom variant="caption" component="p">Loading in progress</Typography> 
+                    )
                 }
-            </Grid>
+            </Fragment>
         );
     }
 }
