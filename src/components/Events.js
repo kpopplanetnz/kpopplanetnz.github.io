@@ -1,42 +1,9 @@
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import EventCard from './EventCard';
 import { Typography } from '@material-ui/core';
 
 import LoadError from './error/LoadError';
-
-// const Events = () => (
-	// <div>
-    // 	<h2>Up and Coming Events</h2>
-    // 	{/* <List>
-    // 		<ListItem primaryText="New Member's Night"
-    // 			secondaryText="Friday 10th March 6:30pm"
-    // 			rightIcon={ <RaisedButton label="Details" onTouchTap={membersClick}/>}
-    			
-	// 		/>
-	// 		<Divider/>
-    // 		<ListItem primaryText="Running Man"
-    // 			secondaryText="Saturday 25th March 10am"
-    // 			rightIcon={ <RaisedButton label="Details" onTouchTap={runningClick}/>}
-	// 		/>
-	// 	</List> */}
-	// 	<p>There are no more events this year, stay tuned for events in 2018</p>
-	// </div>
-// );
-
-
-const styles = theme => ({
-	root: {
-		flexGrow: 1,
-	},
-	// paper: {
-	// 	padding: theme.spacing.unit * 2,
-	// 	textAlign: 'center',
-	// 	color: theme.palette.text.secondary,
-	// }
-});
 
 class Events extends React.Component {
 	constructor(props) {
@@ -86,7 +53,6 @@ class Events extends React.Component {
 	}
 
 	render() {
-		const { classes } = this.props;
 		const { isLoading, events, error } = this.state;
 
 		return (
@@ -100,7 +66,7 @@ class Events extends React.Component {
 
 				{!isLoading ? 
 					(	
-						events.length == 0 && !error ? <Typography gutterBottom variant="body1" component="p">No events available at the moment :(</Typography> : 
+						events.length === 0 && !error ? <Typography gutterBottom variant="body1" component="p">No events available at the moment :(</Typography> : 
 						events.map((event) => {
 							return(
 								<Grid item key={event._id} xs={12}>
@@ -117,8 +83,4 @@ class Events extends React.Component {
 	}
 }
 
-Events.propTypes = {
-	classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(Events);
+export default Events;

@@ -2,10 +2,6 @@ import React, { Fragment } from 'react';
 import { Grid, Link, Typography } from '@material-ui/core';
 
 class ContactUs extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return(
             <Fragment>
