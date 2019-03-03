@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardActions, CardContent, Collapse, IconButton, Typography } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ShareIcon from '@material-ui/icons/Share';
+// import ShareIcon from '@material-ui/icons/Share';
 import { withStyles } from '@material-ui/core/styles';
 import classnames from 'classnames';
 
@@ -28,9 +28,38 @@ class EventCard extends React.Component {
         this.setState(state => ({ expanded: !state.expanded }));
     };
 
+    sameDay(d1, d2) {
+        return d1.getFullYear() === d2.getFullYear() &&
+          d1.getMonth() === d2.getMonth() &&
+          d1.getDate() === d2.getDate();
+    }
+
+    /**
+     * Converts a date object to desired format. 
+     * If no options provided returns full date
+     * if options == 'HH:MM' will only return time component of date
+     */
+    formatDate(date, options) {
+        // DDD dd MMM yyyy HH:MM
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+        if (options === 'HH:MM') {
+            return `${hours}:${minutes}`;
+        } else {
+            var settings = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+            return date.toLocaleDateString('en-NZ', settings) + ` ${hours}:${minutes}`;
+        }
+    }
+
     render() {
         const { classes, event } = this.props;
-        const time = event.startDateTime + " - " + event.endDateTime
+        // Time is in ISO format, remember to change to UTC before printing
+        const startDateTime = new Date(event.startDateTime.replace('z', ''))
+        const endDateTime = new Date(event.endDateTime.replace('z', ''))
+
+        // If dates are on the same day, do not repeat the day and dayDate anymore
+        let time = this.formatDate(startDateTime) + " till " + this.formatDate(endDateTime, this.sameDay(startDateTime, endDateTime) ? 'HH:MM' : "");
+
         return(
             <Card
                 elevation={3}
@@ -86,7 +115,7 @@ class EventCard extends React.Component {
                     <CardContent>
                         <Typography paragraph variant="body1">Description:</Typography>
                         <Typography paragraph variant="body1">
-                        {event.description}
+                            {event.description}
                         </Typography>
                     </CardContent>
                 </Collapse>
