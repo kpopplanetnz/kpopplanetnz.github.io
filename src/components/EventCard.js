@@ -41,24 +41,34 @@ class EventCard extends React.Component {
      */
     formatDate(date, options) {
         // DDD dd MMM yyyy HH:MM
-        const hours = date.getHours();
+        const hours = (date.getUTCHours() + 13) > 24 ? 24 - date.getUTCHours() + 13 : date.getUTCHours() + 13;
         const minutes = date.getMinutes();
+        console.log(`hours: ${hours}`)
         if (options === 'HH:MM') {
             return `${hours}:${minutes}`;
         } else {
-            var settings = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
-            return date.toLocaleDateString('en-NZ', settings) + ` ${hours}:${minutes}`;
+            var settings = {
+                weekday: 'short',
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric',
+                hour12: false,
+                timeZone: "Pacific/Auckland"
+            };
+            return date.toLocaleDateString('en-NZ', settings);
         }
     }
 
     render() {
         const { classes, event } = this.props;
         // Time is in ISO format, remember to change to UTC before printing
-        const startDateTime = new Date(event.startDateTime.replace('z', ''))
-        const endDateTime = new Date(event.endDateTime.replace('z', ''))
+        const startDateTime = new Date(event.startDateTime)
+        const endDateTime = new Date(event.endDateTime)
 
         // If dates are on the same day, do not repeat the day and dayDate anymore
-        let time = this.formatDate(startDateTime) + " till " + this.formatDate(endDateTime, this.sameDay(startDateTime, endDateTime) ? 'HH:MM' : "");
+        let time = this.formatDate(startDateTime) + " - " + this.formatDate(endDateTime, this.sameDay(startDateTime, endDateTime) ? 'HH:MM' : "");
 
         return(
             <Card
