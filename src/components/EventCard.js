@@ -95,16 +95,25 @@ class EventCard extends React.Component {
                     <Typography gutterBottom variant="h5" component="h2">
                         {event.name}
                     </Typography>
-                    <Typography gutterBottom variant="subtitle2" component="h3">
-                        Location: {event.location} 
-                        <br/>
-                        Time: {time}
+                    <Typography variant="subtitle2" component="h3">
+                        <strong>Location:</strong> {event.location}
+                    </Typography>
+                    <Typography variant="subtitle2" component="h3">
+                        <strong>Time:</strong> {time}
                     </Typography>
                     <Typography paragraph variant="body1">
-                        Overview: 
+                        <strong>Overview:</strong>
                         <br/>
                         {event.overview}  
                     </Typography>
+                    {
+                        event.cost ?
+                        (
+                            <Typography paragraph variant="body1">
+                                <strong>Cost:</strong> {event.cost}
+                            </Typography>
+                        ) : ""
+                    }
                 </CardContent>
                 <CardActions className={classes.actions} disableActionSpacing>
                     {/* <IconButton aria-label="Share">
@@ -123,8 +132,9 @@ class EventCard extends React.Component {
                 </CardActions>
                 <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                     <CardContent>
-                        <Typography paragraph variant="body1">Description:</Typography>
                         <Typography paragraph variant="body1">
+                            <strong>Description:</strong>
+                            <br />
                             {event.description}
                         </Typography>
                     </CardContent>
