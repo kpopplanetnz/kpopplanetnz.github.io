@@ -18,7 +18,7 @@ class NavBar extends React.Component {
         return (
             <Fragment>
                 <div>
-                    <img style={styles.banner} src="./images/FB-Banner-Final.jpg" alt="Banner"/>
+                    <img style={styles.banner} src="/images/FB-Banner-Final.jpg" alt="Banner"/>
                 </div>
                 <AppBar position="static">
                     <Tabs

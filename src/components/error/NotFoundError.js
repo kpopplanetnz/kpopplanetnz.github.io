@@ -6,7 +6,7 @@ function NotFoundError() {
         <Fragment>
             <Typography variant="h3" component="h1" style={{textAlign: "center"}}>Error - Page Not Found</Typography>
             <Grid container justify="center">
-                <img src="./images/moonie.png" alt="Moonie"></img>
+                <img src="/images/moonie.png" alt="Moonie"></img>
             </Grid>
         </Fragment>
     )

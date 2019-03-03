@@ -10,7 +10,7 @@ function LoadError(props) {
                 <Typography gutterBottom variant="body1" component="p">Unable to load part/whole page</Typography>
             }
             <Grid container justify="center">
-                <img src="./images/moonie.png" alt="Moonie"></img>
+                <img src="/images/moonie.png" alt="Moonie"></img>
             </Grid>
         </Fragment>
     );
