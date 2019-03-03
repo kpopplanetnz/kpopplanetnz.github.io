@@ -1,6 +1,6 @@
 // Import react related stuff
 import React from 'react';
-import { BrowserRouter, HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import ReactGA from 'react-ga';
 // import injectTapEventPlugin from 'react-tap-event-plugin';
 // Import material ui related stuff
