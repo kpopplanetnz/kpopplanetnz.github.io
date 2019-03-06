@@ -1,9 +1,11 @@
 import React from 'react';
 import { Card, CardActions, CardContent, Collapse, IconButton, Typography } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Edit, Delete } from '@material-ui/icons';
 // import ShareIcon from '@material-ui/icons/Share';
 import { withStyles } from '@material-ui/core/styles';
 import classnames from 'classnames';
+import EventFormDialog from './EventFormDialog';
 
 const styles = theme => ({
     actions: {
@@ -119,6 +121,13 @@ class EventCard extends React.Component {
                     {/* <IconButton aria-label="Share">
                         <ShareIcon />
                     </IconButton> */}
+                    <IconButton aria-label="Edit">
+                        <Edit />
+                    </IconButton>
+                    <EventFormDialog edit event={event} />
+                    <IconButton aria-label="Delete">
+                        <Delete />
+                    </IconButton>
                     <IconButton
                         className={classnames(classes.expand, {
                         [classes.expandOpen]: this.state.expanded,
